@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Android" BasePlatform="Android" SchemaVersion="16" SoundBankVersion="150">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Android</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{A452D110-9576-BC62-B0BF-6FD7B5C31F4E}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<GameParameters>
+				<GameParameter Id="577745166" Name="CanopySpeed"/>
+				<GameParameter Id="634056083" Name="IRFoundState"/>
+				<GameParameter Id="949998751" Name="EngineStartVolume"/>
+				<GameParameter Id="1240670792" Name="Distance"/>
+				<GameParameter Id="1522466203" Name="EngineIdleVolume"/>
+				<GameParameter Id="1786260118" Name="MenuVolume"/>
+				<GameParameter Id="3060638953" Name="EngineStopVolume"/>
+				<GameParameter Id="3156709873" Name="EngineStatus"/>
+				<GameParameter Id="3906868357" Name="EngineStartupPercent"/>
+				<GameParameter Id="4188011570" Name="CockpitLevel"/>
+			</GameParameters>
+		</SoundBank>
+		<SoundBank Id="3331313354" Type="User" Language="SFX" Hash="{2BDEE36B-8737-30EE-B346-CA3018431638}">
+			<ShortName>TestSB</ShortName>
+			<Path>TestSB.bnk</Path>
+			<Media>
+				<File Id="205787666" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>f110Acceleration_1.wav</ShortName>
+					<CachePath>SFX/f110Acceleration_1_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="261906621" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>f110Acceleration_0.wav</ShortName>
+					<CachePath>SFX/f110Acceleration_0_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="272649227" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>f110Acceleration_2.wav</ShortName>
+					<CachePath>SFX/f110Acceleration_2_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="319507435" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>F16-IdleOutside.wav</ShortName>
+					<CachePath>SFX/F16-IdleOutside_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="370917366" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SwitchToggle.wav</ShortName>
+					<CachePath>SFX/SwitchToggle_818F3B66.wem</CachePath>
+				</File>
+				<File Id="446192538" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>f110Acceleration_3.wav</ShortName>
+					<CachePath>SFX/f110Acceleration_3_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="484202815" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlaneExplode.wav</ShortName>
+					<CachePath>SFX/PlaneExplode_818F3B66.wem</CachePath>
+				</File>
+				<File Id="533190637" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>F16APUIdle.wav</ShortName>
+					<CachePath>SFX/F16APUIdle_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="574803911" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>F16APUDeceleration.wav</ShortName>
+					<CachePath>SFX/F16APUDeceleration_818F3B66.wem</CachePath>
+				</File>
+				<File Id="610720522" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PowerCockpitAudio.wav</ShortName>
+					<CachePath>SFX/PowerCockpitAudio_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="657079121" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>f110ShutDown.wav</ShortName>
+					<CachePath>SFX/f110ShutDown_818F3B66.wem</CachePath>
+				</File>
+				<File Id="658027025" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>WindTunnel.wav</ShortName>
+					<CachePath>SFX/WindTunnel_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="660309497" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>f110Acceleration_5.wav</ShortName>
+					<CachePath>SFX/f110Acceleration_5_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="680286370" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>aim9SearchTone.wav</ShortName>
+					<CachePath>SFX/aim9SearchTone_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="720232343" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>CanopyClose.wav</ShortName>
+					<CachePath>SFX/CanopyClose_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="770591842" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>f110Acceleration_4.wav</ShortName>
+					<CachePath>SFX/f110Acceleration_4_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="820349579" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>f110Startup.wav</ShortName>
+					<CachePath>SFX/f110Startup_818F3B66.wem</CachePath>
+				</File>
+				<File Id="875417865" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>F16-OutsideMax.wav</ShortName>
+					<CachePath>SFX/F16-OutsideMax_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="937112477" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AudioMenu.wav</ShortName>
+					<CachePath>SFX/AudioMenu_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="996229628" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>F16-Far.wav</ShortName>
+					<CachePath>SFX/F16-Far_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="1055176387" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>F16APUAcceleration.wav</ShortName>
+					<CachePath>SFX/F16APUAcceleration_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3974827210" Name="PlaneExplosion" MaxAttenuation="3000" DurationType="OneShot" DurationMin="14.689433" DurationMax="14.689433">
+					<MediaRefs>
+						<MediaRef Id="484202815"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3128064251" Name="PlayCanopy" MaxAttenuation="100" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="720232343"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1067507083" Name="PlayCockpitSound" MaxAttenuation="100" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="610720522"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2696387503" Name="PlayIdleAPU" MaxAttenuation="400" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="533190637"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1974938279" Name="PlayIdleEngine" MaxAttenuation="3000" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="205787666"/>
+						<MediaRef Id="261906621"/>
+						<MediaRef Id="272649227"/>
+						<MediaRef Id="319507435"/>
+						<MediaRef Id="446192538"/>
+						<MediaRef Id="658027025"/>
+						<MediaRef Id="660309497"/>
+						<MediaRef Id="770591842"/>
+						<MediaRef Id="875417865"/>
+						<MediaRef Id="996229628"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2282830790" Name="PlayIRtone" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="680286370"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="413545259" Name="PlayMenuMusic" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="937112477"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3342624803" Name="PlayStartAPU" MaxAttenuation="400" DurationType="OneShot" DurationMin="16.950567" DurationMax="16.950567">
+					<MediaRefs>
+						<MediaRef Id="1055176387"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="867514771" Name="PlayStartEngine" MaxAttenuation="3000" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="319507435"/>
+						<MediaRef Id="820349579"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3298093305" Name="PlayStopAPU" MaxAttenuation="400" DurationType="OneShot" DurationMin="9.578231" DurationMax="9.578231">
+					<MediaRefs>
+						<MediaRef Id="574803911"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="951709393" Name="PlayStopEngine" MaxAttenuation="3000" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="319507435"/>
+						<MediaRef Id="657079121"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="998656301" Name="SeekStartAPU" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="1055176387"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3766535255" Name="SeekStopAPU" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="574803911"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3722299613" Name="StopCanopy" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="720232343"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="40605965" Name="StopCockpitSound" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="610720522"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3503700753" Name="StopIdleAPU" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="533190637"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3110430665" Name="StopIdleEngine" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="205787666"/>
+						<MediaRef Id="261906621"/>
+						<MediaRef Id="272649227"/>
+						<MediaRef Id="319507435"/>
+						<MediaRef Id="446192538"/>
+						<MediaRef Id="658027025"/>
+						<MediaRef Id="660309497"/>
+						<MediaRef Id="770591842"/>
+						<MediaRef Id="875417865"/>
+						<MediaRef Id="996229628"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="772970040" Name="StopIRTone" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="680286370"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1973898857" Name="StopMenuMusic" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="4294679785" Name="StopStartAPU" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="1055176387"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="442666337" Name="StopStartEngine" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="319507435"/>
+						<MediaRef Id="820349579"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="938323147" Name="StopStopAPU" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="574803911"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2945760987" Name="StopStopEngine" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<MediaRefs>
+						<MediaRef Id="319507435"/>
+						<MediaRef Id="657079121"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="598009201" Name="ToggleSwitch" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.14512472" DurationMax="0.14512472">
+					<MediaRefs>
+						<MediaRef Id="370917366"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+			<GameParameters>
+				<GameParameter Id="577745166" Name="CanopySpeed"/>
+				<GameParameter Id="634056083" Name="IRFoundState"/>
+				<GameParameter Id="949998751" Name="EngineStartVolume"/>
+				<GameParameter Id="1240670792" Name="Distance"/>
+				<GameParameter Id="1522466203" Name="EngineIdleVolume"/>
+				<GameParameter Id="1786260118" Name="MenuVolume"/>
+				<GameParameter Id="3060638953" Name="EngineStopVolume"/>
+				<GameParameter Id="3156709873" Name="EngineStatus"/>
+				<GameParameter Id="3906868357" Name="EngineStartupPercent"/>
+				<GameParameter Id="4188011570" Name="CockpitLevel"/>
+			</GameParameters>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{79A26CD2-1201-06BE-5742-C924A5AF465E}</FileHash>
+</SoundBanksInfo>
