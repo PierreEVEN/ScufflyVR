@@ -65,7 +65,7 @@ Assets/Developper
 /UserSettings/Layouts/*
 /UserSettings/EditorUserSettings.asset
 
-Assets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset*
+/Assets/Wwise
 
 # project stuff
 ScufflyVR_WwiseProject/.cache/

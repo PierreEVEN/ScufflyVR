@@ -6,12 +6,16 @@
   <CreatedPicker>true</CreatedPicker>
   <CreateWwiseGlobal>true</CreateWwiseGlobal>
   <CreateWwiseListener>true</CreateWwiseListener>
+  <ObjectReferenceAutoCleanup>true</ObjectReferenceAutoCleanup>
+  <LoadSoundEngineInEditMode>false</LoadSoundEngineInEditMode>
   <ShowMissingRigidBodyWarning>true</ShowMissingRigidBodyWarning>
   <ShowSpatialAudioWarningMsg>true</ShowSpatialAudioWarningMsg>
   <WwiseInstallationPathMac />
-  <WwiseInstallationPathWindows>C:\Program Files (x86)\Audiokinetic\Wwise 2021.1.4.7707</WwiseInstallationPathWindows>
-  <WwiseProjectPath>../Scuffly_WwiseProject/Scuffly_WwiseProject.wproj</WwiseProjectPath>
+  <WwiseInstallationPathWindows>C:\Program Files (x86)\Audiokinetic\Wwise 2023.1.0.8367</WwiseInstallationPathWindows>
+  <WwiseProjectPath>../../ScufflyVR/ScufflyVR_WwiseProject/ScufflyVR_WwiseProject.wproj</WwiseProjectPath>
   <UseWaapi>true</UseWaapi>
   <WaapiPort>8080</WaapiPort>
   <WaapiIP>127.0.0.1</WaapiIP>
+  <XMLTranslatorTimeout>10</XMLTranslatorTimeout>
+  <WaapiTranslatorTimeout>0</WaapiTranslatorTimeout>
 </WwiseSettings>
