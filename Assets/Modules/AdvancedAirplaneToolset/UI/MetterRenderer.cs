@@ -182,7 +182,7 @@ public class MetterRenderer : MonoBehaviour
             Text txt = grad.AddComponent<Text>();
             txt.text = graduation.ToString();
             txt.alignment = TextAnchor.MiddleCenter;
-            txt.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            txt.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
 
             RectTransform rect = txt.GetComponent<RectTransform>();
             rect.sizeDelta = new Vector2(30, 30);

@@ -115,6 +115,17 @@ public class PlaneActor : MonoBehaviour
         return currentEnginePower;
     }
 
+    private PilotEyePoint pilotEyePoint;
+
+    public PilotEyePoint PilotEyePoint
+    {
+        get
+        {
+            if (!pilotEyePoint)
+                pilotEyePoint = GetComponentInChildren<PilotEyePoint>(true);
+            return pilotEyePoint;
+        }
+    }
 
     /// <summary>
     /// Rigidbody of the plane

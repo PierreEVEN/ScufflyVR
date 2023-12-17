@@ -184,7 +184,7 @@ public class ScaleRenderer : MaskableGraphic
             gradContainer.transform.localScale = Vector3.one;
             Text gradText = gradContainer.AddComponent<Text>();
             gradText.text = gradValue.ToString();
-            gradText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            gradText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             gradValue += GraduationIncrement;
             gradText.GetComponent<RectTransform>().localPosition = pos;
             gradText.GetComponent<RectTransform>().sizeDelta = new Vector2(50, 50);

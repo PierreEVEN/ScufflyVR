@@ -161,7 +161,7 @@ public class AttitudeWidget : MaskableGraphic
             gradContainerLeft.transform.localScale = Vector3.one;
             Text gradTextLeft = gradContainerLeft.AddComponent<Text>();
             gradTextLeft.text = value.ToString();
-            gradTextLeft.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            gradTextLeft.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             gradTextLeft.GetComponent<RectTransform>().localPosition = new Vector2(-outterWidth + 5, spacing * i -6);
             gradTextLeft.GetComponent<RectTransform>().sizeDelta = new Vector2(50, 50);
             gradTextLeft.fontSize = 12;
@@ -176,7 +176,7 @@ public class AttitudeWidget : MaskableGraphic
             gradContainerRight.transform.localScale = Vector3.one;
             Text gradTextRight = gradContainerRight.AddComponent<Text>();
             gradTextRight.text = value.ToString();
-            gradTextRight.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            gradTextRight.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             gradTextRight.GetComponent<RectTransform>().localPosition = new Vector2(outterWidth - 5, spacing * i - 6);
             gradTextRight.GetComponent<RectTransform>().sizeDelta = new Vector2(50, 50);
             gradTextRight.fontSize = 12;
@@ -198,7 +198,7 @@ public class AttitudeWidget : MaskableGraphic
             gradContainerLeft.transform.localScale = Vector3.one;
             Text gradTextLeft = gradContainerLeft.AddComponent<Text>();
             gradTextLeft.text = value.ToString();
-            gradTextLeft.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            gradTextLeft.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             gradTextLeft.GetComponent<RectTransform>().localPosition = new Vector2(-outterWidth + 5, -spacing * i + 7 + bottomOffsetDelta);
             gradTextLeft.GetComponent<RectTransform>().sizeDelta = new Vector2(50, 50);
             gradTextLeft.fontSize = 12;
@@ -213,7 +213,7 @@ public class AttitudeWidget : MaskableGraphic
             gradContainerRight.transform.localScale = Vector3.one;
             Text gradTextRight = gradContainerRight.AddComponent<Text>();
             gradTextRight.text = value.ToString();
-            gradTextRight.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            gradTextRight.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             gradTextRight.GetComponent<RectTransform>().localPosition = new Vector2(outterWidth - 5, -spacing * i + 7 + bottomOffsetDelta);
             gradTextRight.GetComponent<RectTransform>().sizeDelta = new Vector2(50, 50);
             gradTextRight.fontSize = 12;
