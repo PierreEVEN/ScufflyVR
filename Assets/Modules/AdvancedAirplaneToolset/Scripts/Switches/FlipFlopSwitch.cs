@@ -42,7 +42,7 @@ public class FlipFlopSwitch : SwitchBase
     public Quaternion RotationOff = new Quaternion();
     
     /// <summary>
-    /// Switch audio effect
+    /// Press audio effect
     /// </summary>
     public AK.Wwise.Event PlayEvent;
 
@@ -95,7 +95,7 @@ public class FlipFlopSwitch : SwitchBase
         }
     }
 
-    public override void Switch()
+    public override void Press(Vector3 position, Quaternion rotation)
     {
         // Event called on press
         On = !On;

@@ -24,5 +24,5 @@ public class CameraController : MonoBehaviour
 
     }
 
-    private bool IsInsideCockpit = false;
+    //private bool IsInsideCockpit = false;
 }

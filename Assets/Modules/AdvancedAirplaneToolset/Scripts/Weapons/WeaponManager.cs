@@ -150,7 +150,7 @@ public class WeaponManager : PlaneComponent
     }
 
     /// <summary>
-    /// Switch to air ground weapon mode, or none if it was already the case
+    /// Press to air ground weapon mode, or none if it was already the case
     /// </summary>
     public void AirGroundMode()
     {
@@ -161,7 +161,7 @@ public class WeaponManager : PlaneComponent
     }
 
     /// <summary>
-    /// Switch to air air weapon mode, or none if it was already the case
+    /// Press to air air weapon mode, or none if it was already the case
     /// </summary>
     public void AirAirMode()
     {
@@ -171,7 +171,7 @@ public class WeaponManager : PlaneComponent
     }
 
     /// <summary>
-    /// Switch to canon weapon mode, or none if it was already the case
+    /// Press to canon weapon mode, or none if it was already the case
     /// </summary>
     public void SwitchToCanon()
     {

@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4365646585101077446}
-  m_LocalRotation: {x: -0.1736482, y: 0, z: 0, w: 0.9848078}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.1736483, y: 0, z: 0, w: -0.9848077}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 200, y: 200, z: 200}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2720601774152773990}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7037095372236765692
 MeshFilter:
@@ -113,6 +113,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8198314401489909174}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
@@ -120,7 +121,6 @@ Transform:
   m_Children:
   - {fileID: 1536518562733950129}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1469940247264381013
 BoxCollider:
@@ -130,9 +130,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8198314401489909174}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 3.045108, y: 9.29, z: 5.09}
   m_Center: {x: -0.00000023841858, y: 3.2, z: 0.000028252602}
 --- !u!23 &7121550643268949194
@@ -203,11 +211,12 @@ MonoBehaviour:
   PositionOn: {x: 0, y: 0, z: 0}
   RotationOn: {x: 0.17364818, y: 0, z: 0, w: 0.9848077}
   PositionOff: {x: 0, y: 0, z: 0}
-  RotationOff: {x: -0.17364818, y: 0, z: 0, w: 0.9848077}
+  RotationOff: {x: 0.1736483, y: 0, z: 0, w: -0.9848077}
   PlayEvent:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 4031ab3d064f5174bb0791e2b0b4dcb0, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 4031ab3d064f5174bb0791e2b0b4dcb0,
+      type: 2}
 --- !u!114 &1979107075804541276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,8 +234,10 @@ MonoBehaviour:
   data:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: abe34e14ecf81e442a002d3adb34b334, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: abe34e14ecf81e442a002d3adb34b334,
+      type: 2}
   decodeBank: 0
+  overrideLoadSetting: 0
   loadAsynchronous: 0
   saveDecodedBank: 0
   unloadTriggerList: 958ca0ea

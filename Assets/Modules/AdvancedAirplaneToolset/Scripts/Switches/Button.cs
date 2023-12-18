@@ -51,7 +51,7 @@ public class Button : SwitchBase
             transform.localPosition = initialRelativePos;
     }
     
-    public override void Switch()
+    public override void Press(Vector3 position, Quaternion rotation)
     {
         // Call the desired event depending on the button type
         switch (buttonType)

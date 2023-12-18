@@ -1,4 +1,7 @@
 
+
+using UnityEngine;
+
 /// <summary>
 /// A simple switch interface. handle all the required behaviour to implement many kind of button
 /// </summary>
@@ -12,13 +15,17 @@ public abstract class SwitchBase : PlaneComponent
     /// <summary>
     /// Event called when the button is pressed
     /// </summary>
-    public abstract void Switch();
+    public abstract void Press(Vector3 initialPosition, Quaternion initialRotation);
 
     /// <summary>
     /// Event called when the button is released
     /// </summary>
     public abstract void Release();
 
+    public virtual void SetControllerTransforms(Vector3 position, Quaternion rotation)
+    {
+    }
+    
     /// <summary>
     /// Event called when the button is Overred by the mouse
     /// </summary>
@@ -40,4 +47,5 @@ public abstract class SwitchBase : PlaneComponent
         for (int i = 0; i < transform.childCount; ++i)
             transform.GetChild(i).gameObject.layer = 0;
     }
+
 }

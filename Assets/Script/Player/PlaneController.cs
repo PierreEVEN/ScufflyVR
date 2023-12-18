@@ -13,16 +13,14 @@ public class PlaneController : MonoBehaviour
     /// <summary>
     /// The pitch input from keyboard act like a trim
     /// </summary>
-    float pitchInput = 0;
-    float pitchTrim = 0;
 
     /// <summary>
     /// Current keyboard input state
     /// </summary>
     float currentKeyboardThrottle = 0;
-    float trimIncreaseInput = 0;
     float currentKeyboardYaw = 0;
     float currentKeyboardRoll = 0;
+    float currentKeyboardPitch = 0;
 
     bool enableInputs = false;
 
@@ -52,11 +50,6 @@ public class PlaneController : MonoBehaviour
     {
         if (!EnableInputs)
             return;
-
-        // Update the pitch of the plane
-        pitchTrim += trimIncreaseInput * Time.deltaTime * 1.5f;
-        pitchTrim = Mathf.Clamp(pitchTrim, -1, 1);
-        playerController.ControlledPlane.SetPitchInput(Mathf.Clamp(pitchInput + pitchTrim, -1, 1));
     }
 
     /**
@@ -91,7 +84,7 @@ public class PlaneController : MonoBehaviour
         if (!EnableInputs)
             return;
 
-        pitchInput = input.Get<float>();
+        playerController.ControlledPlane.SetPitchInput(input.Get<float>());
     }
 
     /**
@@ -108,7 +101,10 @@ public class PlaneController : MonoBehaviour
 
     public void OnSetPitch(InputValue input)
     {
-        trimIncreaseInput = Mathf.Clamp(input.Get<float>(), -1, 1);
+        currentKeyboardPitch= Mathf.Clamp(input.Get<float>(), -1, 1);
+        if (!EnableInputs)
+            return;
+        playerController.ControlledPlane.SetPitchInput(currentKeyboardPitch);
     }
     public void OnSetYaw(InputValue input)
     {

@@ -319,6 +319,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "XRTriggerRight",
+                    "type": "Value",
+                    "id": "1a0583ac-fc7e-4be6-ac1a-3bbbf97c0981",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "XRTriggerLeft",
+                    "type": "Value",
+                    "id": "466e2fd1-f620-48ef-88c3-4b8af4dcaee4",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "XRSecondaryTriggerLeft",
+                    "type": "Value",
+                    "id": "90fe423e-dd33-4afb-9dda-eb67b7a7b585",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "XRSecondaryTriggerRight",
+                    "type": "Value",
+                    "id": "62b0b76d-2119-4df8-ab65-328eb391d049",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -371,7 +407,7 @@
                     "id": "bc6f659d-632e-401b-8a0c-073c212f28b0",
                     "path": "<Keyboard>/q",
                     "interactions": "",
-                    "processors": "Scale(factor=-1)",
+                    "processors": "",
                     "groups": "",
                     "action": "SetYaw",
                     "isComposite": false,
@@ -382,7 +418,7 @@
                     "id": "43f7c261-bc4a-4d54-a9b5-0ba1d1fbcca9",
                     "path": "<Keyboard>/e",
                     "interactions": "",
-                    "processors": "Scale",
+                    "processors": "",
                     "groups": "",
                     "action": "SetYaw",
                     "isComposite": false,
@@ -393,7 +429,7 @@
                     "id": "e693122a-6f31-4741-9514-998d93088086",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
-                    "processors": "Scale",
+                    "processors": "",
                     "groups": "",
                     "action": "SetYaw",
                     "isComposite": false,
@@ -404,7 +440,7 @@
                     "id": "be57c4f1-b9c6-4bd4-a07f-57f8bc727d95",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
-                    "processors": "Scale(factor=-1)",
+                    "processors": "",
                     "groups": "",
                     "action": "SetYaw",
                     "isComposite": false,
@@ -957,6 +993,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "CenterCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a237f57-4cda-4b5c-acf3-89454be28530",
+                    "path": "<XRController>{RightHand}/{Trigger}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "XRTriggerRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8b18b30-5069-48a4-9454-6bbb8462dc19",
+                    "path": "<XRController>{LeftHand}/{Trigger}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "XRTriggerLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "326c6519-dd49-442d-bdcb-6398498b176a",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "XRSecondaryTriggerLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3be0e3f3-f017-4b53-b185-4540b87343ec",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "XRSecondaryTriggerRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
