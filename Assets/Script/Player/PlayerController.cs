@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Object = UnityEngine.Object;
 
 [RequireComponent(typeof(CameraController))]
 public class PlayerController : MonoBehaviour
@@ -12,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public PlaneActor ControlledPlane => controlledPlane;
     public GameObject LeftXRController;
     public GameObject RightXRController;
+
+    public GameObject MainMenuUI;
+    private GameObject mainMenuSpawnedUI;
 
     public void SetControlledPlane(GameObject plane)
     {
@@ -46,10 +52,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         cameraController = GetComponent<CameraController>();
-    }
-
-    void Update()
-    {
     }
 
     private bool wasRightTriggerPressed = false;
@@ -123,4 +125,53 @@ public class PlayerController : MonoBehaviour
             wasLeftSecondaryTriggerPressed = false;
         }
     }
+
+    void OnPause(InputValue input)
+    {
+        if (mainMenuSpawnedUI)
+        {
+            Destroy(mainMenuSpawnedUI);
+        }
+        else
+        {
+            float widthAtOneMeter = 1;
+
+            float resolution = 100f;
+            float spawnMaxDistance = 1;
+
+            float spawnDistance = spawnMaxDistance;
+            float spawnSize = spawnDistance * widthAtOneMeter;
+
+            // Progressive box cast with increasing size
+            for (int i = 0; i < resolution; ++i)
+            {
+                float stepDepth = spawnMaxDistance / resolution;
+                float startDistance = stepDepth * i;
+                float width = startDistance * widthAtOneMeter;
+
+                if (Physics.BoxCast(cameraController.HMD.transform.position + cameraController.HMD.transform.forward * startDistance, new Vector3(width / 2, width / 2, 0.01f),
+                        cameraController.HMD.transform.forward, out RaycastHit hit, cameraController.HMD.transform.rotation, stepDepth * 2))
+                {
+                    spawnDistance = startDistance + hit.distance;
+                    spawnSize = width;
+
+                    break;
+                }
+            }
+
+            mainMenuSpawnedUI = Instantiate(MainMenuUI);
+            mainMenuSpawnedUI.transform.parent = transform;
+            mainMenuSpawnedUI.transform.position = cameraController.HMD.transform.position + cameraController.HMD.transform.forward * spawnDistance;
+            mainMenuSpawnedUI.transform.rotation = Quaternion.LookRotation(cameraController.HMD.transform.forward, transform.up);
+            mainMenuSpawnedUI.transform.localScale = new Vector3(spawnSize, spawnSize, spawnSize);
+        }
+    }
+
+    void Update()
+    {
+        if (mainMenuSpawnedUI)
+        {
+        }
+    }
+
 }

@@ -50,9 +50,6 @@ public class XRControllerController : MonoBehaviour
             sw.StopOver();
         switchsInTargetArea.Clear();
 
-        // Temporary controller axis debug
-        Debug.DrawLine(transform.position, transform.position + transform.forward * handLength);
-
         // Retrieve all switch and joysticks in hand direction
         List<RaycastHit> switchHits = new();
         List<RaycastHit> joystickHits = new();

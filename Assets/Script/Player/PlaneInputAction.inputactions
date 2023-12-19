@@ -723,6 +723,17 @@
                 },
                 {
                     "name": "",
+                    "id": "dc1a3130-6b73-4489-9408-05d8731afb5e",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2ec5b5b5-64b5-4b71-97b5-3c9dbd9a8d6b",
                     "path": "<Keyboard>/o",
                     "interactions": "",
@@ -1037,6 +1048,54 @@
                     "processors": "",
                     "groups": "",
                     "action": "XRSecondaryTriggerRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "f0170194-fa14-46ac-be33-e6812de809c1",
+            "actions": [
+                {
+                    "name": "RightClick",
+                    "type": "Button",
+                    "id": "a95c0e7e-232e-4dcc-9c56-5cd08ed3071c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Scroll",
+                    "type": "Value",
+                    "id": "2f4203d6-1ff3-429d-9a12-577b0331c7f8",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4b09dfcb-f057-4a10-95b9-4780918d9325",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb9e6427-d460-4bbb-bbcb-bd92ba135223",
+                    "path": "<OculusTouchController>{RightHand}/thumbstick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
