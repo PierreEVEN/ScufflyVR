@@ -10,6 +10,10 @@ using Object = UnityEngine.Object;
 [RequireComponent(typeof(CameraController))]
 public class PlayerController : MonoBehaviour
 {
+    private static PlayerController localPlayerController = null;
+
+    public static PlayerController LocalPlayerController => localPlayerController;
+
     private PlaneActor controlledPlane;
     private CameraController cameraController;
     public PlaneActor ControlledPlane => controlledPlane;
@@ -27,14 +31,22 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.parent = null;
-        controlledPlane = plane.GetComponent<PlaneActor>();
 
-        if (controlledPlane)
-        {
-            controlledPlane.EnableIndoor(true);
-            transform.parent = controlledPlane.PilotEyePoint.transform;
-            OnCenterCamera(new InputValue());
-        }
+        if (!plane)
+            return;
+
+        controlledPlane = plane.GetComponent<PlaneActor>();
+        controlledPlane.EnableIndoor(true);
+        transform.parent = controlledPlane.PilotEyePoint.transform;
+        OnCenterCamera(new InputValue());
+        controlledPlane.OnDestroyed.AddListener(PlaneDestroyed);
+    }
+
+    void PlaneDestroyed(PlaneActor plane)
+    {
+        plane.OnDestroyed.RemoveListener(PlaneDestroyed);
+        SetControlledPlane(null);
+        transform.position -= cameraController.HMD.transform.forward * 25;
     }
 
     public void OnCenterCamera(InputValue input)
@@ -44,17 +56,21 @@ public class PlayerController : MonoBehaviour
             if (!cameraController)
                 cameraController = GetComponent<CameraController>();
 
-            transform.position = controlledPlane.PilotEyePoint.transform.position - controlledPlane.PilotEyePoint.transform.rotation * cameraController.HMD.transform.localPosition;
+            transform.position = controlledPlane.PilotEyePoint.transform.position -
+                                 controlledPlane.PilotEyePoint.transform.rotation *
+                                 cameraController.HMD.transform.localPosition;
             transform.rotation = controlledPlane.PilotEyePoint.transform.rotation;
         }
     }
 
     void Start()
     {
+        localPlayerController = this;
         cameraController = GetComponent<CameraController>();
     }
 
     private bool wasRightTriggerPressed = false;
+
     void OnXRTriggerRight(InputValue input)
     {
         if (input.isPressed)
@@ -73,6 +89,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private bool wasLeftTriggerPressed = false;
+
     void OnXRTriggerLeft(InputValue input)
     {
         if (input.isPressed)
@@ -91,6 +108,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private bool wasRightSecondaryTriggerPressed = false;
+
     void OnXRSecondaryTriggerRight(InputValue input)
     {
         if (input.isPressed)
@@ -109,6 +127,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private bool wasLeftSecondaryTriggerPressed = false;
+
     void OnXRSecondaryTriggerLeft(InputValue input)
     {
         if (input.isPressed)
@@ -149,8 +168,12 @@ public class PlayerController : MonoBehaviour
                 float startDistance = stepDepth * i;
                 float width = startDistance * widthAtOneMeter;
 
-                if (Physics.BoxCast(cameraController.HMD.transform.position + cameraController.HMD.transform.forward * startDistance, new Vector3(width / 2, width / 2, 0.01f),
-                        cameraController.HMD.transform.forward, out RaycastHit hit, cameraController.HMD.transform.rotation, stepDepth * 2))
+                if (Physics.BoxCast(
+                        cameraController.HMD.transform.position +
+                        cameraController.HMD.transform.forward * startDistance,
+                        new Vector3(width / 2, width / 2, 0.01f),
+                        cameraController.HMD.transform.forward, out RaycastHit hit,
+                        cameraController.HMD.transform.rotation, stepDepth * 2))
                 {
                     spawnDistance = startDistance + hit.distance;
                     spawnSize = width;
@@ -161,8 +184,10 @@ public class PlayerController : MonoBehaviour
 
             mainMenuSpawnedUI = Instantiate(MainMenuUI);
             mainMenuSpawnedUI.transform.parent = transform;
-            mainMenuSpawnedUI.transform.position = cameraController.HMD.transform.position + cameraController.HMD.transform.forward * spawnDistance;
-            mainMenuSpawnedUI.transform.rotation = Quaternion.LookRotation(cameraController.HMD.transform.forward, transform.up);
+            mainMenuSpawnedUI.transform.position = cameraController.HMD.transform.position +
+                                                   cameraController.HMD.transform.forward * spawnDistance;
+            mainMenuSpawnedUI.transform.rotation =
+                Quaternion.LookRotation(cameraController.HMD.transform.forward, transform.up);
             mainMenuSpawnedUI.transform.localScale = new Vector3(spawnSize, spawnSize, spawnSize);
         }
     }
@@ -173,5 +198,4 @@ public class PlayerController : MonoBehaviour
         {
         }
     }
-
 }

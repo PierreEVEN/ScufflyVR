@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class XRControllerController : MonoBehaviour
@@ -47,7 +48,8 @@ public class XRControllerController : MonoBehaviour
 
         // UnHover last frame's switches
         foreach (SwitchBase sw in switchsInTargetArea)
-            sw.StopOver();
+            if (!sw.IsDestroyed())
+                sw.StopOver();
         switchsInTargetArea.Clear();
 
         // Retrieve all switch and joysticks in hand direction

@@ -83,6 +83,12 @@ public class Thruster : PlaneComponent, IPowerProvider
         Plane.RegisterThruster(this);
 
         audioEngine = GetComponent<AudioEngine>();
+        Plane.OnDestroyed.AddListener(PlaneDestroyed);
+    }
+
+    void PlaneDestroyed(PlaneActor plane)
+    {
+        audioEngine.StopAudio();
     }
 
     private void OnDisable()

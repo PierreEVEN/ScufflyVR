@@ -32,6 +32,11 @@ public class AudioEngine : MonoBehaviour
 
     private void OnDisable()
     {
+        StopAudio();
+    }
+
+    public void StopAudio()
+    {
         StopIdle.Post(gameObject);
         StopStop.Post(gameObject);
         StopStart.Post(gameObject);

@@ -24,14 +24,14 @@ public class CanopyAudioAttenuation : PlaneComponent
     // Update is called once per frame
     void Update()
     {
+        if (!PlayerController.LocalPlayerController)
+            return;
+
         // Update global exterior attenuation
-        /*
-        PlaneController planeController = PlaneController.LocalPlayer.GetComponent<CameraManager>();
-        if (planeController.controlledPlane == Plane)
+        if (PlayerController.LocalPlayerController.ControlledPlane == Plane)
         {
-            CockpitLevelRTPC.SetGlobalValue(GetComponent<Camera>().IsInsideCockpit && !GetComponent<Camera>().IsFreeCamera() ? 100 - Mathf.Pow(GetComponent<MobilePart>().currentInput, 0.5f) * 100 : 0);
+            CockpitLevelRTPC.SetGlobalValue(/*GetComponent<Camera>().IsInsideCockpit && !GetComponent<Camera>().IsFreeCamera() ?*/ 100 - Mathf.Pow(GetComponent<MobilePart>().currentInput, 0.5f) * 100 /*: 0*/);
         }
-        */
 
         float audioLevel = 0;
         if (GetComponent<MobilePart>().currentInput < GetComponent<MobilePart>().desiredInput)
