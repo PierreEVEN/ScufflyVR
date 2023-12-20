@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 using Object = UnityEngine.Object;
 
 [RequireComponent(typeof(CameraController))]
@@ -19,9 +21,12 @@ public class PlayerController : MonoBehaviour
     public PlaneActor ControlledPlane => controlledPlane;
     public GameObject LeftXRController;
     public GameObject RightXRController;
+    public GameObject teleportVisual;
 
     public GameObject MainMenuUI;
     private GameObject mainMenuSpawnedUI;
+
+    private float verticalSpeed = 0;
 
     public void SetControlledPlane(GameObject plane)
     {
@@ -40,6 +45,16 @@ public class PlayerController : MonoBehaviour
         transform.parent = controlledPlane.PilotEyePoint.transform;
         OnCenterCamera(new InputValue());
         controlledPlane.OnDestroyed.AddListener(PlaneDestroyed);
+        verticalSpeed = 0;
+    }
+
+    public void MoveToLocation(Vector3 location, float angle)
+    {
+        if (controlledPlane)
+            SetControlledPlane(null);
+
+        transform.position = location;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
     }
 
     void PlaneDestroyed(PlaneActor plane)
@@ -194,8 +209,63 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (mainMenuSpawnedUI)
+        if (!transform.parent)
         {
+            // Max falling speed of 10m/s
+            verticalSpeed = Mathf.Max(verticalSpeed - Time.deltaTime * 4.905f, -10f);
+            // Always teleport player to terrain point
+            if (Physics.Raycast(transform.position + Vector3.up * 1.5f, -Vector3.up, out RaycastHit result))
+            {
+                if (result.distance <= 1.5f)
+                {
+                    verticalSpeed = 0;
+                    transform.position = result.point;
+                }
+            }
+
+            transform.position += Vector3.up * verticalSpeed * Time.deltaTime;
+        }
+
+        teleportVisual.SetActive(false);
+        if (startTeleport)
+        {
+            XRRayInteractor interactor = LeftXRController.GetComponent<XRRayInteractor>();
+            if (Physics.Raycast(interactor.rayEndPoint + Vector3.up * 0.01f, -Vector3.up, out RaycastHit result))
+            {
+                teleportVisual.SetActive(true);
+                teleportVisual.transform.position = result.point;
+            }
+        }
+    }
+    
+    private bool startTeleport = false;
+    public void OnRotateCamera(InputValue input)
+    {
+        if (!startTeleport)
+            transform.Rotate(Vector3.up, Mathf.Round(input.Get<Vector2>().x) * 35);
+    }
+
+    public void OnTeleport(InputValue input)
+    {
+        if (input.Get<Vector2>().y > 0.5f && !startTeleport)
+        {
+            Debug.Log("Start");
+            startTeleport = true;
+        }
+        else if (input.Get<Vector2>().magnitude < 0.4f) // release
+        {
+            if (startTeleport)
+            {
+                Debug.Log("End");
+                XRRayInteractor interactor = LeftXRController.GetComponent<XRRayInteractor>();
+                if (Physics.Raycast(interactor.rayEndPoint + Vector3.up * 0.01f, -Vector3.up, out RaycastHit result))
+                {
+                    transform.rotation.ToAngleAxis(out float angle, out Vector3 _axis);
+                    MoveToLocation(result.point, angle);
+                }
+            }
+
+            startTeleport = false;
         }
     }
 }

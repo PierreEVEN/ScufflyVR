@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Collision
+  - SpawnPoint
+  - Plane
+  - Thrust
+  - Yaw
+  - Pitch
+  - Roll
+  - PlaneSpawnPoint
+  - GPULandscape
+  - BuySpawnPoint
   layers:
   - Default
   - TransparentFX

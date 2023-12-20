@@ -355,6 +355,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "RotateCamera",
+                    "type": "Value",
+                    "id": "1ae6a34d-de6f-4350-9da8-c967476f644a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Teleport",
+                    "type": "Value",
+                    "id": "ad0dcb6c-2a6a-4eb7-90bf-7dcefd9b6f6c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -1050,52 +1068,26 @@
                     "action": "XRSecondaryTriggerRight",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "UI",
-            "id": "f0170194-fa14-46ac-be33-e6812de809c1",
-            "actions": [
-                {
-                    "name": "RightClick",
-                    "type": "Button",
-                    "id": "a95c0e7e-232e-4dcc-9c56-5cd08ed3071c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 },
                 {
-                    "name": "Scroll",
-                    "type": "Value",
-                    "id": "2f4203d6-1ff3-429d-9a12-577b0331c7f8",
-                    "expectedControlType": "Analog",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
                     "name": "",
-                    "id": "4b09dfcb-f057-4a10-95b9-4780918d9325",
-                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
-                    "interactions": "",
+                    "id": "82915e15-9def-4460-b878-33c35e93c01c",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxis}",
+                    "interactions": "Sector(directions=12,sweepBehavior=1)",
                     "processors": "",
                     "groups": "",
-                    "action": "RightClick",
+                    "action": "RotateCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "cb9e6427-d460-4bbb-bbcb-bd92ba135223",
-                    "path": "<OculusTouchController>{RightHand}/thumbstick/y",
+                    "id": "f21dc84f-a085-47c1-b2e3-51bc63b0f957",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxis}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Scroll",
+                    "action": "Teleport",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -22,7 +22,7 @@ public class PlaneController : MonoBehaviour
     float currentKeyboardRoll = 0;
     float currentKeyboardPitch = 0;
 
-    bool enableInputs = false;
+    bool enableInputs = true;
 
     private PlayerController playerController;
 

@@ -5,28 +5,21 @@ using UnityEngine.InputSystem;
 
 public class TemporaryGamemode : MonoBehaviour
 {
-    public GameObject plane;
     public GameObject player;
 
-    private int nbFrames = 0;
+    private GameObject buyMenuPoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerController playerController = player.GetComponent<PlayerController>();
-        PlaneController planeController = player.GetComponent<PlaneController>();
-        planeController.EnableInputs = true;
-        playerController.SetControlledPlane(plane);
+        buyMenuPoint = GameObject.FindGameObjectWithTag("BuySpawnPoint");
+        GoToBuyPoint();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GoToBuyPoint()
     {
-        // Fix wrong camera origin
-        if (nbFrames++ == 60)
-        {
-            PlayerController playerController = player.GetComponent<PlayerController>();
-            playerController.OnCenterCamera(new InputValue());
-        }
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.MoveToLocation(buyMenuPoint.transform.position,
+            Vector3.SignedAngle(buyMenuPoint.transform.forward, new Vector3(1, 0, 0), Vector3.up));
     }
 }
