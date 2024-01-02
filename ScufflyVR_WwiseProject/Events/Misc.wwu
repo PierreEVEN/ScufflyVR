@@ -125,6 +125,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PlayTutorialSuccess" ID="{33DFCB7D-D3FB-4271-AA59-7F640EA2A613}">
+					<ChildrenList>
+						<Action Name="" ID="{5654B515-5852-4EC1-A4A1-5F844F60BC40}" ShortID="926720778">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TutorialComplete" ID="{943B0277-3AB7-404C-8A38-CDD8C8951CBD}" WorkUnitID="{18AE0271-C9D8-4642-A490-9A238814BE27}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

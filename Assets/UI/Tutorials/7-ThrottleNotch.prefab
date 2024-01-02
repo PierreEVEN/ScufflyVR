@@ -113,7 +113,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6044577832450234562}
-  - component: {fileID: 9179823071154936738}
+  - component: {fileID: 4674653010691004673}
   m_Layer: 0
   m_Name: 7-ThrottleNotch
   m_TagString: Untagged
@@ -137,7 +137,7 @@ Transform:
   - {fileID: 2917254869761299380}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9179823071154936738
+--- !u!114 &4674653010691004673
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2904062706847262465}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4105146d3619b34bb79b3ac603b98f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cf7e2ed29643274a8762592a9030727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}

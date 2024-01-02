@@ -34,7 +34,7 @@
 				<GameParameter Id="4188011570" Name="CockpitLevel"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3331313354" Type="User" Language="SFX" Hash="{2BDEE36B-8737-30EE-B346-CA3018431638}">
+		<SoundBank Id="3331313354" Type="User" Language="SFX" Hash="{C445A4B2-10E7-808D-5AF3-2D52EE32863E}">
 			<ShortName>TestSB</ShortName>
 			<Path>TestSB.bnk</Path>
 			<Media>
@@ -69,6 +69,10 @@
 				<File Id="533190637" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>F16APUIdle.wav</ShortName>
 					<CachePath>SFX/F16APUIdle_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="560346928" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>403252-Cute_Generic_Casino_Slot_Win_Payout_Rollup_01_-Sequence_End_005452_.wav</ShortName>
+					<CachePath>SFX/403252-Cute_Generic_Casino_Slot_Win_Payout_Rollup_01_-Sequence_End_005452__818F3B66.wem</CachePath>
 				</File>
 				<File Id="574803911" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>F16APUDeceleration.wav</ShortName>
@@ -190,6 +194,11 @@
 						<MediaRef Id="657079121"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="2221119550" Name="PlayTutorialSuccess" DurationType="OneShot" DurationMin="1" DurationMax="1">
+					<MediaRefs>
+						<MediaRef Id="560346928"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="998656301" Name="SeekStartAPU" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<MediaRefs>
 						<MediaRef Id="1055176387"/>
@@ -277,5 +286,5 @@
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{8FE450CF-3DE8-97CD-1102-FD1A278F1F89}</FileHash>
+	<FileHash>{E02B47A0-3FAF-75B0-3781-2558AEDFABBE}</FileHash>
 </SoundBanksInfo>

@@ -24,6 +24,7 @@ namespace AK
         static const AkUniqueID PLAYSTARTENGINE = 867514771U;
         static const AkUniqueID PLAYSTOPAPU = 3298093305U;
         static const AkUniqueID PLAYSTOPENGINE = 951709393U;
+        static const AkUniqueID PLAYTUTORIALSUCCESS = 2221119550U;
         static const AkUniqueID SEEKSTARTAPU = 998656301U;
         static const AkUniqueID SEEKSTOPAPU = 3766535255U;
         static const AkUniqueID STOPCANOPY = 3722299613U;

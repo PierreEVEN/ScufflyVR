@@ -3,6 +3,7 @@ using System.Linq;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using static Unity.VisualScripting.Metadata;
+using static UnityEngine.GraphicsBuffer;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -11,11 +12,12 @@ public class TutorialManager : MonoBehaviour
     private GameObject currentTutorial = null;
     private int currentStep = 0;
 
-    private Vector3 targetPosition;
-    private Quaternion targetRotation;
+    private Vector3 localTargetPosition;
+    private Quaternion localTargetRotation;
     public GameObject target;
 
     private LineRenderer lineRenderer;
+    public AK.Wwise.Event PlaySuccess;
 
     public void nextStep()
     {
@@ -40,13 +42,14 @@ public class TutorialManager : MonoBehaviour
         currentTutorial.transform.position = transform.position;
         currentTutorial.transform.rotation = transform.rotation;
         currentStep++;
+        PlaySuccess.Post(gameObject);
     }
     
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         nextStep();
-        ComputeTargetPoint(out targetPosition, out targetRotation);
+        ComputeTargetPoint(out localTargetPosition, out localTargetRotation);
     }
 
     Bounds bounds = new Bounds(Vector3.zero, new Vector3(0.975f, 0.975f, 0.01f));
@@ -97,15 +100,15 @@ public class TutorialManager : MonoBehaviour
     {
         ComputeTargetPoint(out var newPos, out var newRot);
 
-        if (Quaternion.Angle(transform.rotation, newRot) > 45 || Vector3.Distance(transform.position, targetPosition) > 0.5f || isBlockedByTarget())
+        if (Quaternion.Angle(transform.rotation, newRot) > 45 || Vector3.Distance(transform.localPosition, localTargetPosition) > 0.5f || isBlockedByTarget())
         {
-            targetPosition = newPos;
-            targetRotation = newRot;
+            localTargetPosition = transform.parent.InverseTransformPoint(newPos);
+            localTargetRotation = Quaternion.Inverse(transform.parent.rotation) * newRot;
         }
 
-
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5);
+        transform.SetLocalPositionAndRotation(
+            Vector3.Lerp(transform.localPosition, localTargetPosition, Time.deltaTime * 5),
+            Quaternion.Lerp(transform.localRotation, localTargetRotation, Time.deltaTime * 5));
 
         if (target && lineRenderer)
         {

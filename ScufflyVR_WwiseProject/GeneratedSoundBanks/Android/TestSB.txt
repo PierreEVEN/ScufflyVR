@@ -11,6 +11,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1067507083	PlayCockpitSound			\Misc\PlayCockpitSound	
 	1973898857	StopMenuMusic			\Misc\StopMenuMusic	
 	1974938279	PlayIdleEngine			\F110Engine\PlayIdleEngine	
+	2221119550	PlayTutorialSuccess			\Misc\PlayTutorialSuccess	
 	2282830790	PlayIRtone			\Misc\PlayIRtone	
 	2696387503	PlayIdleAPU			\APU\PlayIdleAPU	
 	2945760987	StopStopEngine			\F110Engine\StopStopEngine	
@@ -45,6 +46,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	446192538	f110Acceleration_3	C:\Users\pierre\Documents\projects\ScufflyVR\ScufflyVR_WwiseProject\.cache\Android\SFX\f110Acceleration_3_FBC78EF0.wem		\Actor-Mixer Hierarchy\F110JetEngine\F110Thrust\F16Close\f110Acceleration_3		1043444
 	484202815	PlaneExplode	C:\Users\pierre\Documents\projects\ScufflyVR\ScufflyVR_WwiseProject\.cache\Android\SFX\PlaneExplode_818F3B66.wem		\Actor-Mixer Hierarchy\PlaneExplosion\PlaneExplode		2591312
 	533190637	F16APUIdle	C:\Users\pierre\Documents\projects\ScufflyVR\ScufflyVR_WwiseProject\.cache\Android\SFX\F16APUIdle_FBC78EF0.wem		\Actor-Mixer Hierarchy\APUEngine\F16APUIdle		718944
+	560346928	TutorialComplete	C:\Users\pierre\Documents\projects\ScufflyVR\ScufflyVR_WwiseProject\.cache\Android\SFX\403252-Cute_Generic_Casino_Slot_Win_Payout_Rollup_01_-Sequence_End_005452__818F3B66.wem		\Actor-Mixer Hierarchy\Tutorial\TutorialComplete		176496
 	574803911	F16APUDeceleration	C:\Users\pierre\Documents\projects\ScufflyVR\ScufflyVR_WwiseProject\.cache\Android\SFX\F16APUDeceleration_818F3B66.wem		\Actor-Mixer Hierarchy\APUEngine\F16APUDeceleration		844896
 	610720522	PowerCockpitAudio	C:\Users\pierre\Documents\projects\ScufflyVR\ScufflyVR_WwiseProject\.cache\Android\SFX\PowerCockpitAudio_FBC78EF0.wem		\Actor-Mixer Hierarchy\CockpitPower\PowerCockpitAudio		1732704
 	657079121	f110ShutDown	C:\Users\pierre\Documents\projects\ScufflyVR\ScufflyVR_WwiseProject\.cache\Android\SFX\f110ShutDown_818F3B66.wem		\Actor-Mixer Hierarchy\F110JetEngine\F110Stop\f110ShutDown		7774300
