@@ -1,13 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using NUnit.Framework;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
-using Object = UnityEngine.Object;
 
 [RequireComponent(typeof(CameraController))]
 public class PlayerController : MonoBehaviour
@@ -38,7 +31,11 @@ public class PlayerController : MonoBehaviour
         transform.parent = null;
 
         if (!plane)
+        {
+            controlledPlane.OnDestroyed.RemoveListener(PlaneDestroyed);
+            controlledPlane = null;
             return;
+        }
 
         controlledPlane = plane.GetComponent<PlaneActor>();
         controlledPlane.EnableIndoor(true);
@@ -78,7 +75,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Start()
+    public GameObject GetHmd()
+    {
+        return cameraController.HMD;
+    }
+
+    void Awake()
     {
         localPlayerController = this;
         cameraController = GetComponent<CameraController>();
@@ -88,6 +90,8 @@ public class PlayerController : MonoBehaviour
 
     void OnXRTriggerRight(InputValue input)
     {
+        if (mainMenuSpawnedUI)
+            return;
         if (input.isPressed)
         {
             if (!wasRightTriggerPressed)
@@ -101,12 +105,15 @@ public class PlayerController : MonoBehaviour
             RightXRController.GetComponent<XRControllerController>().ReleaseInteraction();
             wasRightTriggerPressed = false;
         }
+        EnterTargetVehicle();
     }
 
     private bool wasLeftTriggerPressed = false;
 
     void OnXRTriggerLeft(InputValue input)
     {
+        if (mainMenuSpawnedUI)
+            return;
         if (input.isPressed)
         {
             if (!wasLeftTriggerPressed)
@@ -120,12 +127,42 @@ public class PlayerController : MonoBehaviour
             LeftXRController.GetComponent<XRControllerController>().ReleaseInteraction();
             wasLeftTriggerPressed = false;
         }
+
+        EnterTargetVehicle();
     }
 
+
+    void EnterTargetVehicle()
+    {
+        if (mainMenuSpawnedUI)
+            return;
+        if (!controlledPlane)
+        {
+            XRRayInteractor rightInteractor = RightXRController.GetComponent<XRRayInteractor>();
+            if (rightInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
+            {
+                PlaneActor plane = hit.collider.GetComponent<PlaneActor>();
+                if (!plane)
+                    plane = hit.collider.GetComponentInParent<PlaneActor>();
+                if (plane)
+                {
+                    SetControlledPlane(plane.gameObject);
+                }
+            }
+        }
+    }
+
+    void OnExitVehicle(InputValue input)
+    {
+        if (controlledPlane)
+            SetControlledPlane(null);
+    }
     private bool wasRightSecondaryTriggerPressed = false;
 
     void OnXRSecondaryTriggerRight(InputValue input)
     {
+        if (mainMenuSpawnedUI)
+            return;
         if (input.isPressed)
         {
             if (!wasRightSecondaryTriggerPressed)
@@ -145,6 +182,8 @@ public class PlayerController : MonoBehaviour
 
     void OnXRSecondaryTriggerLeft(InputValue input)
     {
+        if (mainMenuSpawnedUI)
+            return;
         if (input.isPressed)
         {
             if (!wasLeftSecondaryTriggerPressed)
@@ -226,8 +265,9 @@ public class PlayerController : MonoBehaviour
             transform.position += Vector3.up * verticalSpeed * Time.deltaTime;
         }
 
+
         teleportVisual.SetActive(false);
-        if (startTeleport)
+        if (startTeleport && !controlledPlane)
         {
             XRRayInteractor interactor = LeftXRController.GetComponent<XRRayInteractor>();
             if (Physics.Raycast(interactor.rayEndPoint + Vector3.up * 0.01f, -Vector3.up, out RaycastHit result))
@@ -237,26 +277,25 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
+
     private bool startTeleport = false;
+
     public void OnRotateCamera(InputValue input)
     {
-        if (!startTeleport)
+        if (!startTeleport && !controlledPlane)
             transform.Rotate(Vector3.up, Mathf.Round(input.Get<Vector2>().x) * 35);
     }
 
     public void OnTeleport(InputValue input)
     {
-        if (input.Get<Vector2>().y > 0.5f && !startTeleport)
+        if (input.Get<Vector2>().y > 0.8f && !startTeleport && !controlledPlane)
         {
-            Debug.Log("Start");
             startTeleport = true;
         }
         else if (input.Get<Vector2>().magnitude < 0.4f) // release
         {
             if (startTeleport)
             {
-                Debug.Log("End");
                 XRRayInteractor interactor = LeftXRController.GetComponent<XRRayInteractor>();
                 if (Physics.Raycast(interactor.rayEndPoint + Vector3.up * 0.01f, -Vector3.up, out RaycastHit result))
                 {

@@ -1,13 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class TemporaryGamemode : MonoBehaviour
 {
     public GameObject player;
+    public GameObject buyMenuPoint;
 
-    private GameObject buyMenuPoint;
+    private static TemporaryGamemode gamemode;
+    public static TemporaryGamemode Gamemode => gamemode;
+
+    void Awake()
+    {
+        gamemode = this;
+    }
 
     // Start is called before the first frame update
     void Start()

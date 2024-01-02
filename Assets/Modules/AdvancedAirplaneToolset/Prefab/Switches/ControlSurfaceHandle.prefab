@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e10ff62bec55d0b43838eae0f0f617b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAngles: {x: -30, y: 0, z: -30}
-  maxAngles: {x: 30, y: 0, z: 30}
+  minAngles: {x: -45, y: 0, z: -45}
+  maxAngles: {x: 45, y: 0, z: 45}
   unlocked: 0
 --- !u!65 &8642800755885008639
 BoxCollider:

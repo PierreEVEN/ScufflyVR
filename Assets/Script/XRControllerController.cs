@@ -47,9 +47,6 @@ public class XRControllerController : MonoBehaviour
         }
 
         // UnHover last frame's switches
-        foreach (SwitchBase sw in switchsInTargetArea)
-            if (!sw.IsDestroyed())
-                sw.StopOver();
         switchsInTargetArea.Clear();
 
         // Retrieve all switch and joysticks in hand direction
@@ -81,7 +78,20 @@ public class XRControllerController : MonoBehaviour
                 }
             }
 
-            targetSwitch = closestSwPoint.collider.GetComponent<SwitchBase>();
+            SwitchBase newSwitch = closestSwPoint.collider.GetComponent<SwitchBase>();
+            if (newSwitch != targetSwitch)
+            {
+                if (targetSwitch)
+                {
+                    targetSwitch.StopSelect();
+                    targetSwitch.StopOver();
+                }
+
+                targetSwitch = newSwitch;
+            }
+
+            targetSwitch.StartSelect();
+            targetSwitch.StartOver();
 
             // Get all switch around closest switch and mark them as hovered
             Vector3 hitPoint = GetPointOnLine(closestSwPoint.point, transform.position,
@@ -93,7 +103,6 @@ public class XRControllerController : MonoBehaviour
                     SwitchBase sw = raycastHit.collider.GetComponent<SwitchBase>();
                     if (sw)
                     {
-                        sw.StartOver();
                         switchsInTargetArea.Add(sw);
                     }
                 }
@@ -101,9 +110,16 @@ public class XRControllerController : MonoBehaviour
         }
         else
         {
+
             if (targetSwitch && isGrabbingSwitch)
                 targetSwitch.Release();
             isGrabbingSwitch = false;
+            if (targetSwitch)
+            {
+                targetSwitch.StopSelect();
+                targetSwitch.StopOver();
+            }
+
             targetSwitch = null;
         }
 
@@ -163,12 +179,20 @@ public class XRControllerController : MonoBehaviour
     public void ReleaseJoystick()
     {
         if (targetSwitch && isGrabbingJoystick)
+        {
+            if (isGrabbingSwitch)
+                targetJoystick.ReleaseTrigger();
             targetJoystick.Release();
+        }
+
         isGrabbingJoystick = false;
     }
 
     public void ReleaseInteraction()
     {
+        if (targetJoystick && isGrabbingJoystick)
+            targetJoystick.ReleaseTrigger();
+
         if (targetSwitch && isGrabbingSwitch)
             targetSwitch.Release();
         isGrabbingSwitch = false;

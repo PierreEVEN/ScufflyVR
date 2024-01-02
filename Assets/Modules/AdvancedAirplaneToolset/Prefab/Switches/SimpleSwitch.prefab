@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Desc: 
+  hoverUi: {fileID: 486383257029775211, guid: c2da9c3cfc6bb4940b430e21ae2fb33e, type: 3}
   On: 0
   modifiedProperty: 0
   PositionOn: {x: 0, y: 0, z: 0}

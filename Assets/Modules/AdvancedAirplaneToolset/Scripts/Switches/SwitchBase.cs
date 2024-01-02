@@ -1,5 +1,4 @@
-
-
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -22,10 +21,13 @@ public abstract class SwitchBase : PlaneComponent
     /// </summary>
     public abstract void Release();
 
+    public GameObject hoverUi;
+    private GameObject hoverInstancedUi;
+
     public virtual void SetControllerTransforms(Vector3 position, Quaternion rotation)
     {
     }
-    
+
     /// <summary>
     /// Event called when the button is Overred by the mouse
     /// </summary>
@@ -33,8 +35,23 @@ public abstract class SwitchBase : PlaneComponent
     {
         // set the object layer to 3 to enable outline post process effect
         gameObject.layer = 3;
-        for (int i = 0; i < transform.childCount; ++i)
-            transform.GetChild(i).gameObject.layer = 3;
+        foreach (Transform child in gameObject.GetComponentsInChildren<Transform>(true))
+            child.gameObject.layer = 3;
+    }
+
+    public void StartSelect()
+    {
+        if (hoverInstancedUi)
+            return;
+
+        if (!hoverUi)
+            return;
+
+        hoverInstancedUi = Instantiate(hoverUi);
+        hoverInstancedUi.transform.parent = transform.parent;
+        hoverInstancedUi.transform.position = transform.position;
+        hoverInstancedUi.transform.rotation = transform.rotation;
+        hoverInstancedUi.GetComponent<PlaneSwitchTooltip>().parentSwitch = this;
     }
 
     /// <summary>
@@ -44,8 +61,16 @@ public abstract class SwitchBase : PlaneComponent
     {
         // Set the object layer back to 0
         gameObject.layer = 0;
-        for (int i = 0; i < transform.childCount; ++i)
-            transform.GetChild(i).gameObject.layer = 0;
+        foreach (Transform child in gameObject.GetComponentsInChildren<Transform>(true))
+            child.gameObject.layer = 0;
     }
 
+    public void StopSelect()
+    {
+        if (hoverInstancedUi)
+        {
+            Destroy(hoverInstancedUi);
+            hoverInstancedUi = null;
+        }
+    }
 }

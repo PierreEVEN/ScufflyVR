@@ -30,7 +30,9 @@ public class JoystickBase : PlaneComponent
 
     Vector3 ProjectPointOnLocalPlane(Vector3 point, Vector3 axis)
     {
-        return (new Plane(axis, Vector3.zero)).ClosestPointOnPlane(transform.parent.parent.InverseTransformPoint(point));
+        Vector3 projection = (new Plane(axis, Vector3.zero)).ClosestPointOnPlane(
+            transform.parent.parent.InverseTransformPoint(point));
+        return projection;
     }
 
     void Update()
@@ -43,7 +45,7 @@ public class JoystickBase : PlaneComponent
     {
         if (!grab)
             return;
-        
+
         Vector3 currentHandlePosition = transform.position;
 
         Vector3 localTargetJoystickRotation = transform.parent.localRotation.eulerAngles;
@@ -81,6 +83,9 @@ public class JoystickBase : PlaneComponent
     }
 
     public virtual void PressTrigger()
+    {
+    }
+    public virtual void ReleaseTrigger()
     {
     }
 }
