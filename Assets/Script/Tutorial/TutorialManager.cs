@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
 using Unity.XR.CoreUtils;
 using UnityEngine;
-using static Unity.VisualScripting.Metadata;
-using static UnityEngine.GraphicsBuffer;
 
 public class TutorialManager : MonoBehaviour
 {

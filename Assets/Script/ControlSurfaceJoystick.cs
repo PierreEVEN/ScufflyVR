@@ -6,6 +6,8 @@ public class ControlSurfaceJoystick : JoystickBase
 {
     public bool unlocked = false;
 
+    private float hiddleDelay = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +16,12 @@ public class ControlSurfaceJoystick : JoystickBase
     // Update is called once per frame
     void Update()
     {
+        hiddleDelay += Time.deltaTime;
+        if (hiddleDelay > 0.5f)
+        {
+            Plane.SetRollInput(0);
+            Plane.SetYawInput(0);
+        }
     }
 
     public override void SetControllerTransforms(Vector3 targetPosition, Quaternion targetRotation)
@@ -26,6 +34,7 @@ public class ControlSurfaceJoystick : JoystickBase
         Plane.SetPitchInput(currentValue.x * 2 - 1);
         Plane.SetRollInput(-(currentValue.z * 2 - 1));
         Plane.SetYawInput(-(currentValue.z * 2 - 1));
+        hiddleDelay = 0;
     }
 
     public override void PressTrigger()
