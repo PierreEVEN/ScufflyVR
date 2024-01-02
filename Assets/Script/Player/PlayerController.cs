@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private GameObject mainMenuSpawnedUI;
 
     private float verticalSpeed = 0;
+    private float playerAngle = 0;
 
     public void SetControlledPlane(GameObject plane)
     {
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
         if (controlledPlane)
             SetControlledPlane(null);
 
+        playerAngle = angle;
         transform.position = location;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
     }
@@ -283,7 +285,9 @@ public class PlayerController : MonoBehaviour
     public void OnRotateCamera(InputValue input)
     {
         if (!startTeleport && !controlledPlane)
-            transform.Rotate(Vector3.up, Mathf.Round(input.Get<Vector2>().x) * 35);
+        {
+            MoveToLocation(transform.position, playerAngle + Mathf.Round(input.Get<Vector2>().x * 35));
+        }
     }
 
     public void OnTeleport(InputValue input)
@@ -299,8 +303,7 @@ public class PlayerController : MonoBehaviour
                 XRRayInteractor interactor = LeftXRController.GetComponent<XRRayInteractor>();
                 if (Physics.Raycast(interactor.rayEndPoint + Vector3.up * 0.01f, -Vector3.up, out RaycastHit result))
                 {
-                    transform.rotation.ToAngleAxis(out float angle, out Vector3 _axis);
-                    MoveToLocation(result.point, angle);
+                    MoveToLocation(result.point, playerAngle);
                 }
             }
 
