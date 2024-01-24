@@ -16,12 +16,13 @@ public class ControlSurfaceJoystick : JoystickBase
     // Update is called once per frame
     void Update()
     {
-        hiddleDelay += Time.deltaTime;
-        if (hiddleDelay > 0.5f)
+        if (hiddleDelay <= 0.5f && hiddleDelay + Time.deltaTime > 0.5f)
         {
             Plane.SetRollInput(0);
             Plane.SetYawInput(0);
+            transform.parent.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(transform.parent.localEulerAngles.x, 0, 0));
         }
+        hiddleDelay += Time.deltaTime;
     }
 
     public override void SetControllerTransforms(Vector3 targetPosition, Quaternion targetRotation)
@@ -34,6 +35,7 @@ public class ControlSurfaceJoystick : JoystickBase
         Plane.SetPitchInput(currentValue.x * 2 - 1);
         Plane.SetRollInput(-(currentValue.z * 2 - 1));
         Plane.SetYawInput(-(currentValue.z * 2 - 1));
+        Plane.Brakes = currentValue.x > 0.5;
         hiddleDelay = 0;
     }
 

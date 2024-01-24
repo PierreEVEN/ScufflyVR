@@ -37,6 +37,11 @@ public class DayNightCycle : MonoBehaviour
         }
     }
 
+    public float getRotation()
+    {
+        return orientation;
+    }
+
     public void SetRotation(float rotation)
     {
         orientation = rotation;

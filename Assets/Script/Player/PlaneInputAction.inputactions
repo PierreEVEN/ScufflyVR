@@ -382,6 +382,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DismissTutorial",
+                    "type": "Button",
+                    "id": "10e56bcf-10aa-46fa-a6cb-75ff63300afd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -750,17 +759,6 @@
                 },
                 {
                     "name": "",
-                    "id": "dc1a3130-6b73-4489-9408-05d8731afb5e",
-                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "2ec5b5b5-64b5-4b71-97b5-3c9dbd9a8d6b",
                     "path": "<Keyboard>/o",
                     "interactions": "",
@@ -1014,17 +1012,6 @@
                 },
                 {
                     "name": "",
-                    "id": "ecae1ece-ab59-4cb5-a627-c2010789ac16",
-                    "path": "<XRController>{LeftHand}/{MenuButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CenterCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "aa9994ac-197b-437c-8af7-d15378e05aa6",
                     "path": "<Keyboard>/home",
                     "interactions": "",
@@ -1108,6 +1095,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "ExitVehicle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ecae1ece-ab59-4cb5-a627-c2010789ac16",
+                    "path": "<XRController>{LeftHand}/{MenuButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc1a3130-6b73-4489-9408-05d8731afb5e",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CenterCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6a69aa8-9c9b-444a-a07d-7dfe8135850e",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DismissTutorial",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

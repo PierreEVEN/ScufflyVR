@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
         plane.OnDestroyed.RemoveListener(PlaneDestroyed);
         SetControlledPlane(null);
         transform.position -= cameraController.HMD.transform.forward * 25;
+        transform.position = new Vector3(transform.position.x, Mathf.Max(transform.position.y, plane.transform.position.y + 10), transform.position.z);
     }
 
     public void OnCenterCamera(InputValue input)
@@ -209,42 +210,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            float widthAtOneMeter = 1;
-
-            float resolution = 100f;
-            float spawnMaxDistance = 1;
-
-            float spawnDistance = spawnMaxDistance;
-            float spawnSize = spawnDistance * widthAtOneMeter;
-
-            // Progressive box cast with increasing size
-            for (int i = 0; i < resolution; ++i)
-            {
-                float stepDepth = spawnMaxDistance / resolution;
-                float startDistance = stepDepth * i;
-                float width = startDistance * widthAtOneMeter;
-
-                if (Physics.BoxCast(
-                        cameraController.HMD.transform.position +
-                        cameraController.HMD.transform.forward * startDistance,
-                        new Vector3(width / 2, width / 2, 0.01f),
-                        cameraController.HMD.transform.forward, out RaycastHit hit,
-                        cameraController.HMD.transform.rotation, stepDepth * 2))
-                {
-                    spawnDistance = startDistance + hit.distance;
-                    spawnSize = width;
-
-                    break;
-                }
-            }
-
             mainMenuSpawnedUI = Instantiate(MainMenuUI);
-            mainMenuSpawnedUI.transform.parent = transform;
-            mainMenuSpawnedUI.transform.position = cameraController.HMD.transform.position +
-                                                   cameraController.HMD.transform.forward * spawnDistance;
-            mainMenuSpawnedUI.transform.rotation =
-                Quaternion.LookRotation(cameraController.HMD.transform.forward, transform.up);
-            mainMenuSpawnedUI.transform.localScale = new Vector3(spawnSize, spawnSize, spawnSize);
+            mainMenuSpawnedUI.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
         }
     }
 
@@ -276,6 +243,7 @@ public class PlayerController : MonoBehaviour
             {
                 teleportVisual.SetActive(true);
                 teleportVisual.transform.position = result.point;
+                teleportVisual.transform.rotation = Quaternion.AngleAxis(playerAngle + 90, Vector3.up); ;
             }
         }
     }
@@ -309,5 +277,10 @@ public class PlayerController : MonoBehaviour
 
             startTeleport = false;
         }
+    }
+
+    void OnDismissTutorial(InputValue input)
+    {
+        GetComponentInChildren<TutorialManager>().Dismiss();
     }
 }

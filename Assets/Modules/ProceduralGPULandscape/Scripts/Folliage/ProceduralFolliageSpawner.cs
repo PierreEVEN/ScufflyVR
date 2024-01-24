@@ -28,7 +28,7 @@ public class ProceduralFolliageSpawner : MonoBehaviour
     /// </summary>
     [Header("Quality"), Range(0, 5)]
     public int sectionLoadDistance = 2;
-    [Range(0.1f, 2.0f)]
+    [Range(0.0f, 2.0f)]
     public float densityMultiplier = 1.0f;
     [Header("LodSettings"), Range(100, 20000)]
     public float SectionWidth = 2000;

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -13,11 +14,20 @@ public class TutorialManager : MonoBehaviour
     private Quaternion localTargetRotation;
     public GameObject target;
 
+
+    private bool isHidden = false;
+    public bool enabled = false;
+
     private LineRenderer lineRenderer;
     public AK.Wwise.Event PlaySuccess;
 
     public void nextStep()
     {
+        if (enabled)
+            GetComponentInChildren<Canvas>(true).transform.localScale = new Vector3(0.0005f, 0.0005f, 0.0005f);
+        else
+            GetComponentInChildren<Canvas>(true).transform.localScale = new Vector3(0, 0, 0);
+
         if (currentStep >= TutorialList.Length)
         {
             Destroy(gameObject);
@@ -39,7 +49,21 @@ public class TutorialManager : MonoBehaviour
         currentTutorial.transform.position = transform.position;
         currentTutorial.transform.rotation = transform.rotation;
         currentStep++;
-        PlaySuccess.Post(gameObject);
+        if (enabled)
+            PlaySuccess.Post(gameObject);
+        isHidden = false;
+    }
+
+    public void Dismiss()
+    {
+        if (isHidden && currentTutorial && enabled)
+        {
+            isHidden = false;
+        }
+        else if (enabled)
+        {
+            isHidden = true;
+        }
     }
     
     void Start()
@@ -97,17 +121,25 @@ public class TutorialManager : MonoBehaviour
     {
         ComputeTargetPoint(out var newPos, out var newRot);
 
-        if (Quaternion.Angle(transform.rotation, newRot) > 45 || Vector3.Distance(transform.localPosition, localTargetPosition) > 0.5f || isBlockedByTarget())
+        if (!enabled || Quaternion.Angle(transform.rotation, newRot) > 45 || Vector3.Distance(transform.localPosition, localTargetPosition) > 0.5f || isBlockedByTarget())
         {
             localTargetPosition = transform.parent.InverseTransformPoint(newPos);
             localTargetRotation = Quaternion.Inverse(transform.parent.rotation) * newRot;
         }
 
         transform.SetLocalPositionAndRotation(
-            Vector3.Lerp(transform.localPosition, localTargetPosition, Time.deltaTime * 5),
-            Quaternion.Lerp(transform.localRotation, localTargetRotation, Time.deltaTime * 5));
+            Vector3.Lerp(transform.localPosition, localTargetPosition, Time.unscaledDeltaTime * 5),
+            Quaternion.Lerp(transform.localRotation, localTargetRotation, Time.unscaledDeltaTime * 5));
 
-        if (target && lineRenderer)
+        if (!enabled)
+            isHidden = false;
+
+        if (!isHidden && enabled)
+            GetComponentInChildren<Canvas>(true).transform.localScale = new Vector3(0.0005f, 0.0005f, 0.0005f);
+        else
+            GetComponentInChildren<Canvas>(true).transform.localScale = new Vector3(0, 0, 0);
+
+        if (target && lineRenderer && !isHidden && enabled)
         {
             Vector3 closestPoint = transform.TransformPoint(bounds.ClosestPoint(transform.InverseTransformPoint(target.transform.position)));
             Vector3[] positions = new Vector3[2];
